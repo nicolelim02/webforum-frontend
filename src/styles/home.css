@@ -109,3 +109,33 @@
     color: #353935;
     cursor: pointer;
 }
+
+.create-post {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.create-post-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 16px;
+    background: #4120A9;
+    color: #FAFAFC;
+    border: 1px solid #4120A9;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-post-btn:hover {
+    cursor: pointer;
+    background: #5A58A2;
+}
+
+.create-post-icon {
+    font-size: 24px;
+}

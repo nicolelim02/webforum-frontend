@@ -1,4 +1,5 @@
 import React from "react";
+import CreatePostButton from "../components/createPostButton";
 import Header from "../components/header/header";
 import Posts from "../components/post/posts";
 import Sidebar from "../components/sidebar/sidebar";
@@ -14,6 +15,9 @@ function Home() {
                 </div>
                 <div className="posts-wrapper">
                     <Posts />
+                </div>
+                <div className="create-post">
+                    <CreatePostButton />
                 </div>
             </div>
         </div>

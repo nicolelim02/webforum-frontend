@@ -1,0 +1,111 @@
+/* Modal */
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+/* Adapted from: https://www.w3schools.com/howto/howto_css_overlay.asp */
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  }
+
+.modal-container {
+  background: #FAFAFC;
+  margin: 10%;
+  padding-top: 1%;
+  padding-bottom: 3%;
+  padding-right: 5%;
+  padding-left: 5%;
+  border-radius: 10px;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.modal-header > h3 {
+  flex: 1;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+}
+
+.modal-close-btn:hover {
+  cursor: pointer;
+}
+
+.modal-icon {
+  flex: 1;
+  font-size: 24px;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 30px;
+}
+
+.modal-save-btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  background: #4120A9;
+  border: 1px solid #4120A9;
+  border-radius: 5px;
+  color: #FAFAFC;
+}
+
+.modal-save-btn:hover {
+  cursor: pointer;
+}
+
+/* Create Post Form */
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  grid-row-gap: 30px;
+}
+
+label {
+  font-weight: 500;
+}
+
+.title-input {
+  padding: 8px 10px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+}
+
+.title-input::placeholder {
+  font-family: "Roboto";
+  font-size: 15px;
+}
+
+.content-textarea {
+  padding: 5px 10px;
+  min-height: 100px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+}
+
+.content-textarea::placeholder {
+  font-family: 'Roboto';
+  font-size: 15px;
+}

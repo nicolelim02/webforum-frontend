@@ -3,7 +3,7 @@
     margin: 0 20px;
 }
 
-.sign-in-container {
+.auth-container {
     display: flex;
     flex-direction: column;
     padding: 3%;
@@ -12,21 +12,21 @@
     margin-right: 20%;
 }
 
-.sign-in-container > h1 {
+.auth-container > h1 {
     font-family: "Pacifico";
 }
 
-.sign-in-form {
+.auth-form {
     display: grid;
     grid-template-columns: 1fr 5fr;
     grid-row-gap: 30px;
 }
 
-.sign-in-form > label {
+.auth-form > label {
     font-weight: 500;
 }
 
-.sign-in-form > input {
+.auth-form > input {
     padding: 7px 15px;
 }
 
@@ -37,7 +37,7 @@
     justify-content: flex-end;
 }
 
-.sign-in-btn {
+.auth-btn {
     display: flex;
     flex-direction: row;
     margin-top: 30px;
@@ -51,7 +51,7 @@
     column-gap: 10px;
 }
 
-.sign-in-btn:hover {
+.auth-btn:hover {
     cursor: pointer;
 }
 

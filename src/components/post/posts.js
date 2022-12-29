@@ -2,7 +2,7 @@ import React from "react";
 import Post from "./post";
 import "../../styles/home.css";
 
-function Posts() {
+function Posts({ posts }) {
     const samplePost = { 
         title: "Lorem Ipsum", 
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
@@ -13,7 +13,7 @@ function Posts() {
 
     return (
         <div className="posts">
-            <Post post={samplePost} />
+            {posts.map((post, id) => <Post post={post} key={id} />)}
         </div>
     )
 }

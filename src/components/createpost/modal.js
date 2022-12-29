@@ -17,11 +17,6 @@ function Modal({ isOpen, setIsOpen, title, children }) {
         }
     }, [isOpen]);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setIsOpen(false);
-    }
-
     return (
         <div className="overlay hide" id="modal">
             <div className="modal-container" >
@@ -36,9 +31,7 @@ function Modal({ isOpen, setIsOpen, title, children }) {
                 <div className="modal-body">
                     {children}
                 </div>
-                <div className="modal-footer">
-                    <button className="modal-save-btn" onClick={handleSubmit}>Save</button>
-                </div>
+                <div className="modal-footer" />
             </div>
         </div>
     )

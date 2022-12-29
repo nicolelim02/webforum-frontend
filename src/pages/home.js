@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreatePostButton from "../components/createpost/createPostButton";
 import CreatePostForm from "../components/createpost/createPostForm";
 import Modal from "../components/createpost/modal";
 import Header from "../components/header/header";
 import Posts from "../components/post/posts";
 import Sidebar from "../components/sidebar/sidebar";
+import { samplePosts } from "../data/sampleData";
 import "../styles/home.css";
 
 function Home() {
+
     const [isOpen, setIsOpen] = useState(false);
+    const [posts, setPosts] = useState(samplePosts)
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [posts])
 
     return (
         <div>
@@ -19,7 +26,7 @@ function Home() {
                         <Sidebar />
                     </div>
                     <div className="posts-wrapper">
-                        <Posts />
+                        <Posts posts={posts} />
                     </div>
                     <div className="create-post">
                         <CreatePostButton setIsOpen={setIsOpen} />
@@ -28,7 +35,7 @@ function Home() {
             </div>
             <div className="create-post-form">
                 <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={"Create a Post"}>
-                    <CreatePostForm />
+                    <CreatePostForm setPosts={setPosts} />
                 </Modal>
             </div>
         </div>

@@ -1,0 +1,15 @@
+.logo-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.logo-name {
+    font-family: "Pacifico", cursive;
+}
+
+.logo-icon {
+    font-size: 24px;
+    color: #4120A9;
+}

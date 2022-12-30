@@ -12,21 +12,23 @@ function Home() {
 
     const [isOpen, setIsOpen] = useState(false);
     const [posts, setPosts] = useState(samplePosts)
+    const [filteredPosts, setFilteredPosts] = useState(posts);
 
     useEffect(() => {
         setIsOpen(false);
+        setFilteredPosts(posts);
     }, [posts])
 
     return (
         <div>
             <div className="home-wrapper">
-                <Header />
+                <Header posts={posts} setFilteredPosts={setFilteredPosts} />
                 <div className="home-container">
                     <div className="sidebar-wrapper">
                         <Sidebar />
                     </div>
                     <div className="posts-wrapper">
-                        <Posts posts={posts} />
+                        <Posts posts={filteredPosts} />
                     </div>
                     <div className="create-post">
                         <CreatePostButton setIsOpen={setIsOpen} />

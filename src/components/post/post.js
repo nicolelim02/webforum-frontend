@@ -2,7 +2,7 @@ import React from "react";
 import { IconContext } from "react-icons";
 import { BsChat, BsHeart } from "react-icons/bs";
 import "../../styles/home.css";
-import Avatar from "./avatar";
+import Avatar from "../commons/avatar";
 
 function Post({ post }) {
 
@@ -56,7 +56,7 @@ function Post({ post }) {
     }
 
     return (
-        <div className="post-container">
+        <div className="post-container" id="post-">
             <div className="post-header">
                 <h3 className="post-title">{title}</h3>
                 <ul className="post-topics">

@@ -5,13 +5,13 @@ import "../../styles/header.css";
 import Link from "./link";
 import Logo from "./logo";
 
-function Header() {
+function Header({ posts, setFilteredPosts}) {
     return (
         <div className="header-container">
             <div className="header-title">
                 <Logo />
             </div>
-            <SearchBar />
+            <SearchBar posts={posts} setFilteredPosts={setFilteredPosts} />
             <div className="links">
                 <Link icon={<AiOutlineUser />} label="Profile" />
                 <Link icon={<AiOutlineLogout />} label="Logout" />

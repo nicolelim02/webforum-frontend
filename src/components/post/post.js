@@ -6,11 +6,12 @@ import Avatar from "../commons/avatar";
 
 function Post({ post }) {
 
-    const { title, content, topics, user, time } = post;
+    const { title, content, topics, created_at } = post;
+    const username = JSON.parse(localStorage.getItem("user")).username;
     
     const getTimeDifference = (currentTime) => {
         const now = Date.now();
-        const start = currentTime.getTime();
+        const start = new Date(currentTime).getTime()
         const diff = (now - start) / 1000; // in seconds
 
         const oneMinute = 60;
@@ -66,10 +67,8 @@ function Post({ post }) {
             <div className="post-content">{content}</div>
             <div className="post-footer">
                 <div className="post-user">
-                    <Avatar username={user} />
-                    <p className="post-time">
-                        {getTimeDifference(time)}
-                    </p>
+                    <Avatar username={username} />
+                    <div className="post-time">{getTimeDifference(created_at)}</div>
                 </div>
                 <div className="post-btns">
                     <button className="post-btn">

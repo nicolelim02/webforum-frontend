@@ -5,14 +5,30 @@ import Modal from "../components/createpost/modal";
 import Header from "../components/header/header";
 import Posts from "../components/post/posts";
 import Sidebar from "../components/sidebar/sidebar";
-import { samplePosts } from "../data/sampleData";
 import "../styles/home.css";
 
 function Home() {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [posts, setPosts] = useState(samplePosts)
+    const [posts, setPosts] = useState([])
     const [filteredPosts, setFilteredPosts] = useState(posts);
+
+    useEffect(() => {
+        const backendUrl = "http://localhost:8000/posts";
+        fetch(backendUrl)
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.error) {
+                    alert(res.error);
+                } else {
+                    setPosts(res.map(post => {
+                        const { content, title, topics, user, created_at, updated_at } = post;
+                        const userId = user.id;
+                        return { title: title, content: content, topics: topics, user_id: userId, created_at: created_at, updated_at: updated_at }
+                    }))
+                }
+            });
+    }, [])
 
     useEffect(() => {
         setIsOpen(false);

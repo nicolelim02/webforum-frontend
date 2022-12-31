@@ -15,16 +15,39 @@ function CreatePostForm({ setPosts }) {
     const [content, setContent] = useState("");
     const [topics, setTopics] = useState([]);
 
+    const createPost = (postInfo) => {
+        const backendUrl = "http://localhost:8000/posts/new";
+        const init = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: localStorage.token
+            },
+            body: JSON.stringify({ post: postInfo })
+        }
+
+        fetch(backendUrl, init)
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.error) {
+                    console.log(res.error);
+                }
+            })
+    }
+
     const handleSubmit = () => {
         const topicValues = topics.map(topic => topic.value);
+        const userId = JSON.parse(localStorage.getItem("user")).id;
         const newPost = { 
             title: title, 
             content: content, 
             topics: topicValues,
-            user: "TestUser",
-            time: new Date(Date.now())
+            user_id: userId,
+            created_at: null,
+            updated_at: null,
         };
-        console.log(newPost);
+        createPost(newPost);
         setPosts((prev) => [...prev, newPost]);
     }
 

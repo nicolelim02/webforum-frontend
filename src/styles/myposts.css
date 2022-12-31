@@ -1,0 +1,14 @@
+.my-posts-container {
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-posts-header {
+    margin-bottom: 3%;
+}
+
+.more-btn {
+    border: none;
+    background: none;
+}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IconContext } from "react-icons";
 import { AiOutlineLogin } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import Logo from "../components/header/logo";
+import Logo from "../components/commons/logo";
 import "../styles/auth.css"
 import "../styles/logo.css";
 

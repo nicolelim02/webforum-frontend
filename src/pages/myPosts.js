@@ -18,8 +18,9 @@ function MyPosts() {
                     const userId = JSON.parse(localStorage.getItem("user")).id;
                     const posts = res.filter(post => post.user.id === userId);
                     setMyPosts(posts.map((post) => {
-                        const { title, content, topics, created_at, updated_at} = post;
+                        const { id, title, content, topics, created_at, updated_at} = post;
                         return {
+                            id: id,
                             title: title,
                             content: content,
                             topics: topics,
@@ -32,6 +33,18 @@ function MyPosts() {
             })
     }, []);
 
+    const deletePost = (post) => {
+        const { id } = post;
+        const backendUrl = `http://localhost:8000/posts/${id}`;
+        fetch(backendUrl, {
+            method: "DELETE"
+        })
+            .then(() => {
+                const updated = myPosts.filter((post) => post.id !== id);
+                setMyPosts(updated);
+            });
+    }
+
     return (
         <div className="my-posts">
             <div className="logo">
@@ -39,7 +52,7 @@ function MyPosts() {
             </div>
             <div className="my-posts-container">
                 <h2 className="my-posts-header">My Posts</h2>
-                <Posts posts={myPosts} showButton={true} />
+                <Posts posts={myPosts} showButton={true} deletePost={deletePost} />
             </div>
         </div>
     )

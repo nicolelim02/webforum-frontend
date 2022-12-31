@@ -22,9 +22,9 @@ function Home() {
                     alert(res.error);
                 } else {
                     setPosts(res.map(post => {
-                        const { content, title, topics, user, created_at, updated_at } = post;
+                        const { id, content, title, topics, user, created_at, updated_at } = post;
                         const userId = user.id;
-                        return { title: title, content: content, topics: topics, user_id: userId, created_at: created_at, updated_at: updated_at }
+                        return { id: id, title: title, content: content, topics: topics, user_id: userId, created_at: created_at, updated_at: updated_at }
                     }))
                 }
             });
@@ -35,6 +35,10 @@ function Home() {
         setFilteredPosts(posts);
     }, [posts])
 
+    const deletePost = (post) => {
+        alert(`Post titled ${post.title} cannot be deleted from the home page`)
+    }
+
     return (
         <div>
             <div className="home-wrapper">
@@ -44,7 +48,7 @@ function Home() {
                         <Sidebar />
                     </div>
                     <div className="posts-wrapper">
-                        <Posts posts={filteredPosts} />
+                        <Posts posts={filteredPosts} deletePost={deletePost} />
                     </div>
                     <div className="create-post">
                         <CreatePostButton setIsOpen={setIsOpen} />

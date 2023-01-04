@@ -37,6 +37,10 @@ function CreatePostForm({ setPosts }) {
     }
 
     const handleSubmit = () => {
+        if (title.trim() === "" || content.trim() === "" || topics.length === 0) {
+            alert("There are some empty/invalid inputs, please try again");
+            return;
+        }
         const topicValues = topics.map(topic => topic.value);
         const userId = JSON.parse(localStorage.getItem("user")).id;
         const newPost = { 

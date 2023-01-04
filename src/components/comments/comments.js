@@ -20,7 +20,7 @@ function Comments({ isVisible, index }) {
     }, [isVisible, index])
 
     const handleEnter = (event) => {
-        if (event.key === "Enter") {
+        if (event.key === "Enter" & comment.trim() !== "") {
             const newComment = {
                 body: comment,
                 parent: null,

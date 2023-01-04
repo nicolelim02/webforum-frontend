@@ -1,11 +1,10 @@
 import React from "react";
 import { IconContext } from "react-icons";
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { BsChat, BsHeart } from "react-icons/bs";
 import "../../styles/home.css";
 import Avatar from "../commons/avatar";
 
-function Post({ post, showButton, deletePost }) {
+function Post({ post }) {
 
     const { title, content, topics, created_at } = post;
     const username = JSON.parse(localStorage.getItem("user")).username;
@@ -57,10 +56,6 @@ function Post({ post, showButton, deletePost }) {
         }
     }
 
-    const handleDelete = () => {
-        deletePost(post);
-    }
-
     return (
         <div className="post-container" id="post-">
             <div className="post-header">
@@ -68,20 +63,6 @@ function Post({ post, showButton, deletePost }) {
                 <ul className="post-topics">
                     {topics?.map((topic) => <li key={topic} className="topic-item">{topic}</li>)}
                 </ul>
-                {showButton && 
-                    <div className="btn-group">
-                        <button>
-                            <IconContext.Provider value={{ className: "btn-group-icon" }}>
-                                <AiOutlineEdit />
-                            </IconContext.Provider>
-                        </button>
-                        <button onClick={handleDelete}>
-                            <IconContext.Provider value={{ className: "btn-group-icon" }}>
-                                <AiOutlineDelete />
-                            </IconContext.Provider>
-                        </button>
-                    </div>
-                }
             </div>
             <div className="post-content">{content}</div>
             <div className="post-footer">

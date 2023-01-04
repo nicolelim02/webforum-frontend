@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CreatePostButton from "../components/createpost/createPostButton";
 import CreatePostForm from "../components/createpost/createPostForm";
-import Modal from "../components/createpost/modal";
+import Modal from "../components/commons/modal";
 import Header from "../components/header/header";
 import Posts from "../components/post/posts";
 import Sidebar from "../components/sidebar/sidebar";
@@ -39,6 +39,10 @@ function Home() {
         alert(`Post titled ${post.title} cannot be deleted from the home page`)
     }
 
+    const updatePost = (post) => {
+        alert(`Post titled ${post.title} cannot be updated from the home page`)
+    }
+
     return (
         <div>
             <div className="home-wrapper">
@@ -48,7 +52,7 @@ function Home() {
                         <Sidebar />
                     </div>
                     <div className="posts-wrapper">
-                        <Posts posts={filteredPosts} deletePost={deletePost} />
+                        <Posts posts={filteredPosts} deletePost={deletePost} updatePost={updatePost} />
                     </div>
                     <div className="create-post">
                         <CreatePostButton setIsOpen={setIsOpen} />

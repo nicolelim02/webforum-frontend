@@ -3,22 +3,22 @@ import { IconContext } from "react-icons";
 import { MdClose } from "react-icons/md";
 import "../../styles/createpost.css";
 
-function Modal({ isOpen, setIsOpen, title, children }) {
+function Modal({ isOpen, setIsOpen, title, index=0, children }) {
 
     useEffect(() => {
         if (isOpen) {
-            const modal = document.getElementById("modal");
+            const modal = document.getElementById(`modal-${index}`);
             modal.classList.add("show");
             modal.classList.remove("hide");
         } else {
-            const modal = document.getElementById("modal");
+            const modal = document.getElementById(`modal-${index}`);
             modal.classList.add("hide");
             modal.classList.remove("show");
         }
-    }, [isOpen]);
+    }, [isOpen, index]);
 
     return (
-        <div className="overlay hide" id="modal">
+        <div className="overlay hide" id={`modal-${index}`}>
             <div className="modal-container" >
                 <div className="modal-header">
                     <h3>{title}</h3>

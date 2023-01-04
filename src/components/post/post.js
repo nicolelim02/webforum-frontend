@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { IconContext } from "react-icons";
 import { BsChat, BsHeart } from "react-icons/bs";
 import "../../styles/home.css";
+import Comments from "../comments/comments";
 import Avatar from "../commons/avatar";
 
 function Post({ post }) {
 
-    const { title, content, topics, created_at } = post;
+    const [isVisible, setIsVisible] = useState(false);
+    const { title, content, topics, created_at, id } = post;
     const username = JSON.parse(localStorage.getItem("user")).username;
     
     const getTimeDifference = (currentTime) => {
@@ -57,34 +59,37 @@ function Post({ post }) {
     }
 
     return (
-        <div className="post-container" id="post-">
-            <div className="post-header">
-                <h3 className="post-title">{title}</h3>
-                <ul className="post-topics">
-                    {topics?.map((topic) => <li key={topic} className="topic-item">{topic}</li>)}
-                </ul>
-            </div>
-            <div className="post-content">{content}</div>
-            <div className="post-footer">
-                <div className="post-user">
-                    <Avatar username={username} />
-                    <div className="post-time">{getTimeDifference(created_at)}</div>
+        <div className="post">
+            <div className="post-container" id={`post-${id}`}>
+                <div className="post-header">
+                    <h3 className="post-title">{title}</h3>
+                    <ul className="post-topics">
+                        {topics?.map((topic) => <li key={topic} className="topic-item">{topic}</li>)}
+                    </ul>
                 </div>
-                <div className="post-btns">
-                    <button className="post-btn">
-                        <IconContext.Provider value={{ className: "post-icon" }}>
-                            <BsHeart />
-                        </IconContext.Provider>
-                        <p>Like</p>
-                    </button>
-                    <button className="post-btn">
-                        <IconContext.Provider value={{ className: "post-icon" }}>
-                            <BsChat />
-                        </IconContext.Provider>
-                        <p>Comment</p>
-                    </button>
+                <div className="post-content">{content}</div>
+                <div className="post-footer">
+                    <div className="post-user">
+                        <Avatar username={username} />
+                        <div className="post-time">{getTimeDifference(created_at)}</div>
+                    </div>
+                    <div className="post-btns">
+                        <button className="post-btn">
+                            <IconContext.Provider value={{ className: "post-icon" }}>
+                                <BsHeart />
+                            </IconContext.Provider>
+                            <p>Like</p>
+                        </button>
+                        <button className="post-btn" onClick={() => setIsVisible(!isVisible)}>
+                            <IconContext.Provider value={{ className: "post-icon" }}>
+                                <BsChat />
+                            </IconContext.Provider>
+                            <p>Comment</p>
+                        </button>
+                    </div>
                 </div>
             </div>
+            <Comments isVisible={isVisible} index={id} />
         </div>
     )
 }

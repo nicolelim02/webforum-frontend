@@ -1,0 +1,41 @@
+.show {
+    display: block;
+}
+
+.comments-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.comments-header > input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background: #ECECF5;
+    border: #ECECF5;
+}
+
+.comments-header > input:focus {
+    outline: none;
+}
+
+.comments-container {
+    margin-top: 5%;
+}
+
+.comment {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    margin-bottom: 5%;
+}
+
+.comment-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.comment-header {
+    font-weight: 700;
+}

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { IconContext } from "react-icons";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { BsChat, BsHeart } from "react-icons/bs";
-import "../../styles/home.css";
 import Avatar from "../commons/avatar";
 import Modal from "../commons/modal";
 import EditPostForm from "./editPostForm";
@@ -78,8 +77,8 @@ function EditablePost({ post, deletePost, updatePost, index }) {
     }
 
     return (
-        <div>
-            <div className="post-container" id="post-">
+        <div className="post">
+            <div className="post-container" id={`post-${index}`}>
                 <div className="post-header">
                     <h3 className="post-title">{title}</h3>
                     <ul className="post-topics">

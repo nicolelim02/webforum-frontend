@@ -8,6 +8,26 @@ function Comments({ isVisible, index }) {
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
+        const backendUrl = "http://localhost:8000/comments";
+        fetch(backendUrl)
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.error) {
+                    alert(res.error);
+                } else {
+                    const filteredComments = res.filter(c => c.post.id === index)
+                        .map(c => {
+                            const user_id = c.user.id;
+                            const post_id = c.post.id;
+                            const content = c.content;
+                            return { post_id: post_id, user_id: user_id, content: content }
+                        });
+                    setComments(filteredComments);
+                }
+            })
+    }, [index])
+
+    useEffect(() => {
         const commentSection = document.getElementById(`comments-${index}`);
 
         if (isVisible) {
@@ -19,15 +39,36 @@ function Comments({ isVisible, index }) {
         }
     }, [isVisible, index])
 
+    const addComment = () => {
+        const newComment = {
+            post_id: index,
+            user_id: JSON.parse(localStorage.getItem("user")).id,
+            content: comment
+        }
+
+        const backendUrl = "http://localhost:8000/comments";
+        const init = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: localStorage.token
+            },
+            body: JSON.stringify({ comment: newComment })
+        };
+        fetch(backendUrl, init)
+            .then((res) => res.json());
+    }
+
     const handleEnter = (event) => {
         if (event.key === "Enter" & comment.trim() !== "") {
             const newComment = {
-                body: comment,
-                parent: null,
+                content: comment,
                 user_id: JSON.parse(localStorage.getItem("user")).id,
-                created_at: null
+                post_id: index
             }
             setComments((prev) => [...prev, newComment]);
+            addComment();
             setComment("");
         }
     }

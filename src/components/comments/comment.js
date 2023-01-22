@@ -12,7 +12,7 @@ function Comment({ comment }) {
             </div>
             <div className="comment-container">
                 <div className="comment-header">{username}</div>
-                <div className="comment-body">{comment.body}</div>
+                <div className="comment-body">{comment.content}</div>
             </div>
         </div>
     )

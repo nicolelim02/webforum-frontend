@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../components/commons/logo"
-import EditablePosts from "../components/editpost/editablePosts";
+import Posts from "../components/post/posts";
 import "../styles/myposts.css";
 
 function MyPosts() {
@@ -74,7 +74,7 @@ function MyPosts() {
             </div>
             <div className="my-posts-container">
                 <h2 className="my-posts-header">My Posts</h2>
-                <EditablePosts posts={myPosts} deletePost={deletePost} updatePost={updatePost} />
+                <Posts posts={myPosts} updatePost={updatePost} deletePost={deletePost} isEditable={true} />
             </div>
         </div>
     )

@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { IconContext } from "react-icons";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { BsChat, BsHeart } from "react-icons/bs";
 import "../../styles/home.css";
 import Comments from "../comments/comments";
 import Avatar from "../commons/avatar";
+import Modal from "../commons/modal";
+import EditPostForm from "../editpost/editPostForm";
 
-function Post({ post }) {
+function Post({ post, deletePost, updatePost, isEditable }) {
 
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false); // show/hide comments
     const { title, content, topics, created_at, id } = post;
     const username = JSON.parse(localStorage.getItem("user")).username;
+
+    const [isOpen, setIsOpen] = useState(false);
     
     const getTimeDifference = (currentTime) => {
         const now = Date.now();
@@ -58,6 +63,19 @@ function Post({ post }) {
         }
     }
 
+    const handleUpdate = (postInfo) => {
+        const { updatedTitle, updatedContent, updatedTopics } = postInfo;
+        const updatedPost = {
+            title: updatedTitle.trim().length > 0 ? updatedTitle : title,
+            content: updatedContent.trim().length > 0 ? updatedContent : content,
+            topics: updatedTopics.length > 0 ? updatedTopics.map((updatedTopic) => updatedTopic.value) : topics,
+            id: id,
+            user_id: post.user_id,
+            created_at: created_at
+        }
+        updatePost(updatedPost);
+    }
+
     return (
         <div className="post">
             <div className="post-container" id={`post-${id}`}>
@@ -66,6 +84,19 @@ function Post({ post }) {
                     <ul className="post-topics">
                         {topics?.map((topic) => <li key={topic} className="topic-item">{topic}</li>)}
                     </ul>
+                    {isEditable && 
+                    <div className="btn-group">
+                        <button onClick={() => setIsOpen(true)}>
+                            <IconContext.Provider value={{ className: "btn-group-icon" }}>
+                                <AiOutlineEdit />
+                            </IconContext.Provider>
+                        </button>
+                        <button onClick={() => deletePost(post)}>
+                            <IconContext.Provider value={{ className: "btn-group-icon" }}>
+                                <AiOutlineDelete />
+                            </IconContext.Provider>
+                        </button>
+                    </div>}
                 </div>
                 <div className="post-content">{content}</div>
                 <div className="post-footer">
@@ -90,6 +121,9 @@ function Post({ post }) {
                 </div>
             </div>
             <Comments isVisible={isVisible} index={id} />
+            <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={"Edit a Post"} index={id}>
+                <EditPostForm handleUpdate={handleUpdate} setIsOpen={setIsOpen} />
+            </Modal>
         </div>
     )
 }

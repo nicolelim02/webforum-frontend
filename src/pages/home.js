@@ -35,14 +35,6 @@ function Home() {
         setFilteredPosts(posts);
     }, [posts])
 
-    const deletePost = (post) => {
-        alert(`Post titled ${post.title} cannot be deleted from the home page`)
-    }
-
-    const updatePost = (post) => {
-        alert(`Post titled ${post.title} cannot be updated from the home page`)
-    }
-
     return (
         <div>
             <div className="home-wrapper">
@@ -52,7 +44,7 @@ function Home() {
                         <Sidebar />
                     </div>
                     <div className="posts-wrapper">
-                        <Posts posts={filteredPosts} deletePost={deletePost} updatePost={updatePost} />
+                        <Posts posts={filteredPosts} />
                     </div>
                     <div className="create-post">
                         <CreatePostButton setIsOpen={setIsOpen} />

@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Logo from "../components/commons/logo"
+import Header from "../components/header/header";
 import Posts from "../components/post/posts";
+import Sidebar from "../components/sidebar/sidebar";
 import "../styles/myposts.css";
 
 function MyPosts() {
     const [myPosts, setMyPosts] = useState([]);
+    const [filteredPosts, setFilteredPosts] = useState(myPosts);
+
+    useEffect(() => {
+        setFilteredPosts(myPosts);
+    }, [myPosts]);
     
     useEffect(() => {
         const backendUrl = "http://localhost:8000/posts/";
@@ -68,15 +74,19 @@ function MyPosts() {
     }
 
     return (
-        <div className="my-posts">
-            <div className="logo">
-                <Logo />
-            </div>
-            <div className="my-posts-container">
-                <h2 className="my-posts-header">My Posts</h2>
-                <Posts posts={myPosts} updatePost={updatePost} deletePost={deletePost} isEditable={true} />
+        <div className="my-posts-wrapper">
+            <Header posts={myPosts} setFilteredPosts={setFilteredPosts} />
+            <div className="my-posts">
+                <div className="sidebar">
+                    <Sidebar />
+                </div>
+                <div className="my-posts-container">
+                    <h2 className="my-posts-header">My Posts</h2>
+                    <Posts posts={filteredPosts} updatePost={updatePost} deletePost={deletePost} isEditable={true} />
+                </div>
             </div>
         </div>
+        
     )
 }
 

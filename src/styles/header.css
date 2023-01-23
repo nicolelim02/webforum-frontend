@@ -10,14 +10,13 @@
 }
 
 .header-title {
-    margin-right: 5%;
     flex: 1;
 }
 
 /* Search bar */
 
 .search-bar-container {
-    flex: 4;
+    flex: 3;
     margin: 0 20px;
 }
 
@@ -36,38 +35,14 @@
     outline: none;
 }
 
-/* Header links */
-
-.links {
-    display: flex;
-    flex-direction: row;
-    flex: 2;
-}
-
-.link-container {
+.logout {
     flex: 1;
-    margin-left: 5%;
-    margin-right: 5%;
-    box-sizing: border-box;
-}
-
-.link {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-.link > p {
-    margin-left: 7px;
-}
-
-.link:visited {
-    color: #353935;;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .logout-btn {
-    flex: 1;
     display: flex;
     align-items: center;
     background: #4120A9;
@@ -75,6 +50,7 @@
     border: 1px solid #4120A9;
     border-radius: 5px;
     justify-content: center;
+    width: 60%;
 }
 
 .logout-name {

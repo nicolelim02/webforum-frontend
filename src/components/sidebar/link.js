@@ -2,10 +2,10 @@ import React from "react";
 import { IconContext } from "react-icons";
 import "../../styles/sidebar.css";
 
-function Link({icon, label}) {
+function Link({icon, label, link}) {
     return (
         <div className="sidebar-link-container">
-            <a href="/" className="sidebar-link">
+            <a href={link} className="sidebar-link">
                 <IconContext.Provider value={{ className: "sidebar-icon" }}>
                     {icon}
                 </IconContext.Provider>

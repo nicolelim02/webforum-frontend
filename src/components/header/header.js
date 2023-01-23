@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineLogout, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineLogout } from "react-icons/ai";
 import { BsFolder2Open } from "react-icons/bs";
 import SearchBar from "./searchBar";
 import "../../styles/header.css";
@@ -27,14 +27,13 @@ function Header({ posts, setFilteredPosts}) {
                 <Logo />
             </div>
             <SearchBar posts={posts} setFilteredPosts={setFilteredPosts} />
-            <div className="links">
-                <Link icon={<AiOutlineUser />} label="Profile" link={"/"}/>
-                <Link icon={<BsFolder2Open />} label="My Posts" link={"/my-posts"} />
-            </div>  
-            <button className="logout-btn" onClick={logout}>
+            <div className="logout">
+                <button className="logout-btn" onClick={logout}>
                 <AiOutlineLogout />
                 <p className="logout-name">Logout</p>
             </button>
+            </div>
+            
         </div>
     )
 }

@@ -39,7 +39,7 @@ function Home() {
         <div>
             <div className="home-wrapper">
                 <Header posts={posts} setFilteredPosts={setFilteredPosts} />
-                <div className="home-container">
+                <div className="home-container padding-2">
                     <div className="sidebar-wrapper">
                         <Sidebar />
                     </div>

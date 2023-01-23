@@ -76,7 +76,7 @@ function MyPosts() {
     return (
         <div className="my-posts-wrapper">
             <Header posts={myPosts} setFilteredPosts={setFilteredPosts} />
-            <div className="my-posts">
+            <div className="my-posts padding-2">
                 <div className="sidebar">
                     <Sidebar />
                 </div>

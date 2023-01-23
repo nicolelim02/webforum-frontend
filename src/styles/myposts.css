@@ -6,7 +6,6 @@
 .my-posts {
     display: flex;
     flex-direction: row;
-    padding: 2%;
 }
 
 .sidebar {

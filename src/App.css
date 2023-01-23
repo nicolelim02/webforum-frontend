@@ -2,3 +2,15 @@ body {
   color: #353935;
   background: #FAFAFC;
 }
+
+.padding-2 {
+  padding: 2%;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}

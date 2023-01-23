@@ -1,7 +1,3 @@
-.show {
-    display: block;
-}
-
 .comments-header {
     display: flex;
     flex-direction: row;

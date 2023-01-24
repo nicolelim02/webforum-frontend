@@ -1,9 +1,7 @@
 import React from "react";
 import { AiOutlineLogout } from "react-icons/ai";
-import { BsFolder2Open } from "react-icons/bs";
 import SearchBar from "./searchBar";
 import "../../styles/header.css";
-import Link from "./link";
 import Logo from "../commons/logo";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +10,8 @@ function Header({ posts, setFilteredPosts}) {
     const navigate = useNavigate();
 
     const logout = () => {
-        const backendUrl = "http://localhost:8000/logout";
+        const id = JSON.parse(localStorage.getItem("user")).id;
+        const backendUrl = `http://localhost:8000/logout/${id}`;
         fetch(backendUrl, { method: "DELETE" })
             .then(() => {
             navigate("/")

@@ -40,14 +40,7 @@ function Comments({ isVisible, index }) {
         }
     }, [isVisible, index])
 
-    const addComment = () => {
-        const newComment = {
-            post_id: index,
-            user_id: JSON.parse(localStorage.getItem("user")).id,
-            content: comment,
-            username: JSON.parse(localStorage.getItem("user")).username
-        }
-
+    const addComment = (newComment) => {
         const backendUrl = "http://localhost:8000/comments";
         const init = {
             method: "POST",
@@ -71,7 +64,7 @@ function Comments({ isVisible, index }) {
                 username: JSON.parse(localStorage.getItem("user")).username
             }
             setComments((prev) => [...prev, newComment]);
-            addComment();
+            addComment(newComment);
             setComment("");
         }
     }

@@ -11,8 +11,7 @@ import EditPostForm from "../editpost/editPostForm";
 function Post({ post, deletePost, updatePost, isEditable }) {
 
     const [isVisible, setIsVisible] = useState(false); // show/hide comments
-    const { title, content, topics, created_at, id } = post;
-    const username = JSON.parse(localStorage.getItem("user")).username;
+    const { title, content, topics, created_at, id, username } = post;
 
     const [isOpen, setIsOpen] = useState(false);
     

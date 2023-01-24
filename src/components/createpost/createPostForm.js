@@ -42,12 +42,12 @@ function CreatePostForm({ setPosts }) {
             return;
         }
         const topicValues = topics.map(topic => topic.value);
-        const userId = JSON.parse(localStorage.getItem("user")).id;
         const newPost = { 
             title: title, 
             content: content, 
             topics: topicValues,
-            user_id: userId,
+            user_id: JSON.parse(localStorage.getItem("user")).id,
+            username: JSON.parse(localStorage.getItem("user")).username,
             created_at: null,
             updated_at: null,
         };

@@ -20,7 +20,8 @@ function Comments({ isVisible, index }) {
                             const user_id = c.user.id;
                             const post_id = c.post.id;
                             const content = c.content;
-                            return { post_id: post_id, user_id: user_id, content: content }
+                            const username = c.user.username;
+                            return { post_id: post_id, user_id: user_id, content: content, username: username }
                         });
                     setComments(filteredComments);
                 }
@@ -43,7 +44,8 @@ function Comments({ isVisible, index }) {
         const newComment = {
             post_id: index,
             user_id: JSON.parse(localStorage.getItem("user")).id,
-            content: comment
+            content: comment,
+            username: JSON.parse(localStorage.getItem("user")).username
         }
 
         const backendUrl = "http://localhost:8000/comments";
@@ -63,9 +65,10 @@ function Comments({ isVisible, index }) {
     const handleEnter = (event) => {
         if (event.key === "Enter" & comment.trim() !== "") {
             const newComment = {
-                content: comment,
+                post_id: index,
                 user_id: JSON.parse(localStorage.getItem("user")).id,
-                post_id: index
+                content: comment,
+                username: JSON.parse(localStorage.getItem("user")).username
             }
             setComments((prev) => [...prev, newComment]);
             addComment();

@@ -3,7 +3,7 @@ import Avatar from "../commons/avatar";
 import "../../styles/comments.css";
 
 function Comment({ comment }) {
-    const username = JSON.parse(localStorage.getItem("user")).username;
+    const { username } = comment;
 
     return (
         <div className="comment">

@@ -3,7 +3,7 @@ import { IconContext } from "react-icons";
 import { MdClose } from "react-icons/md";
 import "../../styles/createpost.css";
 
-function Modal({ isOpen, setIsOpen, title, index=0, children }) {
+function Modal({ isOpen, setIsOpen, title, index="add_post", children }) {
 
     useEffect(() => {
         if (isOpen) {

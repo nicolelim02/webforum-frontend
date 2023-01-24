@@ -23,8 +23,7 @@ function Home() {
                 } else {
                     setPosts(res.map(post => {
                         const { id, content, title, topics, user, created_at, updated_at } = post;
-                        const userId = user.id;
-                        return { id: id, title: title, content: content, topics: topics, user_id: userId, created_at: created_at, updated_at: updated_at }
+                        return { id: id, title: title, content: content, topics: topics, user_id: user.id, username: user.username, created_at: created_at, updated_at: updated_at }
                     }))
                 }
             });

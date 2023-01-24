@@ -14,6 +14,7 @@ function SignUp() {
     const navigate = useNavigate();
 
     const signUp = (userInfo) => {
+        console.log(userInfo);
         const backendUrl = "http://localhost:8000/signup";
         const init = {
             method: "POST",

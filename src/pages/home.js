@@ -7,7 +7,7 @@ import Posts from "../components/post/posts";
 import Sidebar from "../components/sidebar/sidebar";
 import "../styles/home.css";
 
-function Home() {
+function Home({ setIsLoggedIn }) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [posts, setPosts] = useState([])
@@ -37,7 +37,7 @@ function Home() {
     return (
         <div>
             <div className="home-wrapper">
-                <Header posts={posts} setFilteredPosts={setFilteredPosts} />
+                <Header posts={posts} setFilteredPosts={setFilteredPosts} setIsLoggedIn={setIsLoggedIn} />
                 <div className="home-container padding-2">
                     <div className="sidebar-wrapper">
                         <Sidebar />

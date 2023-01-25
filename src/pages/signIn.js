@@ -6,7 +6,7 @@ import Logo from "../components/commons/logo";
 import "../styles/auth.css"
 import "../styles/logo.css";
 
-function SignIn() {
+function SignIn({ setIsLoggedIn }) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -34,6 +34,7 @@ function SignIn() {
                     localStorage.setItem("user", JSON.stringify(res.user));
                     localStorage.setItem("token", res.jwt);
                     navigate("/home");
+                    setIsLoggedIn(true);
                 }
             })
     }

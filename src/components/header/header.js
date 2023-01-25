@@ -5,7 +5,7 @@ import "../../styles/header.css";
 import Logo from "../commons/logo";
 import { useNavigate } from "react-router-dom";
 
-function Header({ posts, setFilteredPosts}) {
+function Header({ posts, setFilteredPosts, setIsLoggedIn }) {
 
     const navigate = useNavigate();
 
@@ -14,9 +14,10 @@ function Header({ posts, setFilteredPosts}) {
         const backendUrl = `http://localhost:8000/logout/${id}`;
         fetch(backendUrl, { method: "DELETE" })
             .then(() => {
-            navigate("/")
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
+                setIsLoggedIn(false);
+                navigate("/")
+                localStorage.removeItem("user");
+                localStorage.removeItem("token");
             })
             .catch((err) => console.log(err))
     }

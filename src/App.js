@@ -14,6 +14,7 @@ function App() {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
+      localStorage.removeItem("user");
     }
   }, [setIsLoggedIn])
 
